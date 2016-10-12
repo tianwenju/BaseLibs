@@ -8,7 +8,7 @@ import android.view.ViewGroup;
 
 import com.qf.baseframework.base.IView;
 import com.qf.baseframework.utils.ViewUtils;
-import com.qf.baseframework.view.LoadingPage;
+import com.qf.baseframework.widget.LoadingPage;
 
 
 public abstract class IFragment extends Fragment implements IView {

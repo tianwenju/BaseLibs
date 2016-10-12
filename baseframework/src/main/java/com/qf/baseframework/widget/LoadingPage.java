@@ -1,4 +1,4 @@
-package com.qf.baseframework.view;
+package com.qf.baseframework.widget;
 
 import android.content.Context;
 import android.util.AttributeSet;
