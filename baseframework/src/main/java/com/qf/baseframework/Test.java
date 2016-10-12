@@ -9,14 +9,12 @@ public class Test extends Student<Test> {
 
 
     public static void main(String[] args) {
-
-        Student<Test> mStudent = new Student<>();
-        Class clazz = mStudent.getClass();
+        Test test = new Test();
+        Class clazz = test.getClass();
         System.out.print(clazz.getSuperclass() + "\n");
         ParameterizedType mGenericSuperclass = (ParameterizedType) clazz.getGenericSuperclass();
-        Class cass = (Class) mGenericSuperclass.getActualTypeArguments()[0];
+        Class cass = (Class) (mGenericSuperclass.getActualTypeArguments()[0]);
         System.out.print(cass.toString());
-
     }
 
 }
