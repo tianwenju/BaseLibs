@@ -66,6 +66,7 @@ public class Api {
                 .baseUrl(BASE_URL)
                 .build();
         service = retrofit.create(ApiService.class);
+
     }
 
     //在访问HttpMethods时创建单例
