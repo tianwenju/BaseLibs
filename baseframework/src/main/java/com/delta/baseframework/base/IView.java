@@ -5,7 +5,5 @@ package com.delta.baseframework.base;
  */
 public interface IView {
 
-    void showSucess();
 
-    void showError();
 }

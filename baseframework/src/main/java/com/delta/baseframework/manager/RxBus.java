@@ -29,6 +29,7 @@ public class RxBus {
     }
 
     private RxBus() {
+
     }
 
     @SuppressWarnings("rawtypes")

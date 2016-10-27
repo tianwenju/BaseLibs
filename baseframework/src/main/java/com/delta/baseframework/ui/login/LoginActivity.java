@@ -8,9 +8,8 @@ import android.widget.EditText;
 
 import com.delta.baseframework.C;
 import com.delta.baseframework.R;
-import com.delta.baseframework.base.BaseActivity;
 import com.delta.baseframework.data.entity._User;
-import com.delta.baseframework.manager.RxManager;
+import com.delta.baseframework.modify.MBaseActivity;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -21,7 +20,12 @@ import rx.functions.Action1;
  * Created by V.Wenju.Tian on 2016/10/19.
  */
 
-public class LoginActivity extends BaseActivity<LoginPresenter, LoginModel> {
+public class LoginActivity extends MBaseActivity<LoginPresenter> implements LoginContract.View {
+    @Override
+    public void loginSucess() {
+
+    }
+
 
     private static final String TAG = "LoginActivity";
     @BindView(R.id.et_name)
@@ -51,8 +55,7 @@ public class LoginActivity extends BaseActivity<LoginPresenter, LoginModel> {
         btLogin = (Button) findViewById(R.id.bt_login);
         etName = ((EditText) findViewById(R.id.et_name));
         etPass = ((EditText) findViewById(R.id.et_pass));
-        RxManager.getInstance().on(C.EVENT_LOGIN, new Action1<Object>() {
-
+        getmPresenter().getRxManager().on(C.EVENT_LOGIN, new Action1<Object>() {
 
             @Override
             public void call(Object o) {
@@ -66,7 +69,7 @@ public class LoginActivity extends BaseActivity<LoginPresenter, LoginModel> {
                 _User user = new _User();
                 user.setPassword("1qaz@WSX");
                 user.setUsername("V.wenju.tian");
-
+                getmPresenter().Login("V.wenju.tian", "1qaz@WSX");
 //                retrofit = new Retrofit.Builder()
 //
 //                        .addConverterFactory(GsonConverterFactory.create())
@@ -74,7 +77,6 @@ public class LoginActivity extends BaseActivity<LoginPresenter, LoginModel> {
 //                        .baseUrl(Api.BASE_URL)
 //                        .build();
 //                ApiService apiService = retrofit.create(ApiService.class);
-
 
 
 //               apiService.getSiteResults("drc","jan").compose(RxsRxSchedulers.io_main()).subscribe(new Subscriber<SiteData>() {
@@ -121,23 +123,12 @@ public class LoginActivity extends BaseActivity<LoginPresenter, LoginModel> {
 //                }
 //
 //
-                mPresenter.Login("V.wenju.tian", "1qaz@WSX");
+
 
             }
         });
     }
 
-    @Override
-    public void showSucess() {
-
-        Log.e("自定义标签", "showSucess: ");
-    }
-
-    @Override
-    public void showError() {
-
-        Log.e("自定义标签", "showError: ");
-    }
 
     @OnClick(R.id.bt_login)
     public void onClick() {
@@ -146,7 +137,7 @@ public class LoginActivity extends BaseActivity<LoginPresenter, LoginModel> {
             return;
         }
 
-        mPresenter.Login(etName.getText().toString(), etPass.getText().toString());
+        getmPresenter().Login(etName.getText().toString(), etPass.getText().toString());
 
     }
 }

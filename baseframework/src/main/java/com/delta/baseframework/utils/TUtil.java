@@ -1,32 +1,54 @@
 package com.delta.baseframework.utils;
 
+import android.util.Log;
+
 import java.lang.reflect.ParameterizedType;
+import java.lang.reflect.Type;
 
 /**
- * @author V.Wenju.Tian
+ * Created by V.Wenju.Tian on 2016/9/2.
  */
 public class TUtil {
-    public static <T> T getT(Object o, int i) {
+
+    public static <T> T getT(Object object, int i) {
+
+        Type type = object.getClass().getGenericSuperclass();
+        ParameterizedType mGenericSuperclass = (ParameterizedType) type;
+        Class<T> mTClass = (Class<T>) mGenericSuperclass.getActualTypeArguments()[i];
+        Log.e("自定义标签", "getT: "+mTClass.getName());
         try {
-            return ((Class<T>) ((ParameterizedType) (o.getClass()
-                    .getGenericSuperclass())).getActualTypeArguments()[i])
-                    .newInstance();
-        } catch (InstantiationException e) {
-            e.printStackTrace();
-        } catch (IllegalAccessException e) {
-            e.printStackTrace();
-        } catch (ClassCastException e) {
-            e.printStackTrace();
+            return mTClass.newInstance();
+        } catch (InstantiationException mE) {
+            mE.printStackTrace();
+        } catch (IllegalAccessException mE) {
+            mE.printStackTrace();
+        }
+        return null;
+    }
+    public static <T> T getSupterT(Object object, int i) {
+
+        Type type = object.getClass().getSuperclass().getGenericSuperclass();
+        ParameterizedType mGenericSuperclass = (ParameterizedType) type;
+        Class<T> mTClass = (Class<T>) mGenericSuperclass.getActualTypeArguments()[i];
+        Log.e("自定义标签", "getSupterT: "+mTClass.getName());
+        try {
+            return mTClass.newInstance();
+        } catch (InstantiationException mE) {
+            mE.printStackTrace();
+        } catch (IllegalAccessException mE) {
+            mE.printStackTrace();
         }
         return null;
     }
 
-    public static Class<?> forName(String className) {
+    public static Class<?> forname(String name) {
         try {
-            return Class.forName(className);
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
+            return Class.forName(name);
+        } catch (ClassNotFoundException mE) {
+            mE.printStackTrace();
         }
         return null;
     }
+
+
 }

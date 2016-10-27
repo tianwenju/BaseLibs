@@ -5,16 +5,19 @@ import com.delta.baseframework.manager.RxManager;
 /**
  * Created by V.Wenju.Tian on 2016/9/1.
  */
-public abstract class BasePersenter<T extends IModel, V extends IView> {
+public abstract class BasePersenter<T, V > {
 
     protected T mIModel;
     protected V mIView;
-    protected RxManager rxManager = RxManager.getInstance();
+    protected RxManager rxManager = new RxManager();
 
+    public RxManager getRxManager() {
+        return rxManager;
+    }
 
-    void set(V mIView, T mIModel) {
-        this.mIModel = mIModel;
+    public void set(V mIView, T mIModel) {
         this.mIView = mIView;
+        this.mIModel = mIModel;
         onStart();
     }
 
@@ -22,6 +25,7 @@ public abstract class BasePersenter<T extends IModel, V extends IView> {
 
     void onDestory() {
         mIView = null;
+        rxManager.clear();
     }
 
 }

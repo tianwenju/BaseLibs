@@ -15,24 +15,24 @@ import rx.subscriptions.CompositeSubscription;
  */
 public class RxManager {
 
-    private static  RxManager rxManager;
-
-    private RxManager() {
-    }
-
-    public static RxManager getInstance(){
-
-        if (rxManager == null) {
-
-            synchronized (RxManager.class) {
-
-                if (rxManager == null) {
-                    rxManager = new RxManager();
-                }
-            }
-        }
-        return  rxManager;
-    }
+//    private static  RxManager rxManager;
+//
+//    private RxManager() {
+//    }
+//
+//    public static RxManager getInstance(){
+//
+//        if (rxManager == null) {
+//
+//            synchronized (RxManager.class) {
+//
+//                if (rxManager == null) {
+//                    rxManager = new RxManager();
+//                }
+//            }
+//        }
+//        return  rxManager;
+//    }
 
     public RxBus mRxBus = RxBus.$();
     private Map<String, Observable<?>> mObservables = new HashMap<>();// 管理观察源

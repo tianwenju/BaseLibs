@@ -1,19 +1,22 @@
-package com.delta.baseframework.base;
+package com.delta.baseframework.modify;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 
+import com.delta.baseframework.base.IView;
 import com.delta.baseframework.utils.TUtil;
 
 import butterknife.ButterKnife;
 
+;
+
 /**
  * Created by V.Wenju.Tian on 2016/9/2.
  */
-public abstract class BaseActivity<T extends BasePersenter, E extends IModel> extends AppCompatActivity{
+public abstract class MBaseActivity<T extends MBasePresenter> extends AppCompatActivity{
     protected T mPresenter;
-    protected E mModel;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -21,15 +24,18 @@ public abstract class BaseActivity<T extends BasePersenter, E extends IModel> ex
         setContentView(getLayoutID());
         ButterKnife.bind(this);
         mPresenter = TUtil.getT(this, 0);
-        mModel = TUtil.getT(this, 1);
+        Log.e("自定义标签", "onCreate: ");
         if (this instanceof IView) {
-            mPresenter.set(this, mModel);
+            Log.e("自定义标签", "onCreate: "+"------------");
+            mPresenter.set(this);
         }
         initView();
 
     }
 
-
+    public T getmPresenter() {
+        return mPresenter;
+    }
 
     @Override
     protected void onDestroy() {
