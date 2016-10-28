@@ -30,7 +30,7 @@ public class LoginPresenter extends LoginContract.Presenter<LoginModel> {
             public void onError(Throwable e) {
 
                     getView().loginFailed();
-                    Log.e(TAG, "call() called with: throwable = [" + e .getMessage()+ "]");
+                    Log.e(TAG, "call() called with: throwable = [" + e .getMessage()    + "]");
 
             }
 

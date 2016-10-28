@@ -46,13 +46,6 @@ public class RxManager {
     public void on(String eventName, Action1<Object> action1) {
         Observable<?> mObservable = mRxBus.register(eventName);
         mObservables.put(eventName, mObservable);
-//        mObservable.observeOn(AndroidSchedulers.mainThread()).subscribe(
-//        action1, new Action1<Throwable>() {
-//            @Override
-//            public void call(Throwable throwable) {
-//
-//            }
-//        });
         mCompositeSubscription.add(mObservable.observeOn(AndroidSchedulers.mainThread())
                 .subscribe(action1, (e) -> e.printStackTrace()));
     }

@@ -11,6 +11,7 @@ import com.delta.baseframework.utils.TUtil;
 import com.wenju.statusbar.StatusBarCompat;
 
 import butterknife.ButterKnife;
+import butterknife.Unbinder;
 
 ;
 
@@ -24,8 +25,8 @@ public abstract class MBaseActivity<T extends MBasePresenter> extends AppCompatA
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(getLayoutID());
+        Unbinder bind = ButterKnife.bind(this);
         StatusBarCompat.setStatusBarColor(this, Color.parseColor("#ff00ff"));
-        ButterKnife.bind(this);
         mPresenter = TUtil.getT(this, 0);
         Log.e("自定义标签", "onCreate: ");
         if (this instanceof IView) {
@@ -36,7 +37,7 @@ public abstract class MBaseActivity<T extends MBasePresenter> extends AppCompatA
 
     }
 
-    public T getmPresenter() {
+    public T getPresenter() {
         return mPresenter;
     }
 

@@ -1,14 +1,11 @@
 package com.delta.baseframework.ui.login;
 
-import android.text.TextUtils;
 import android.util.Log;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
 import com.delta.baseframework.C;
 import com.delta.baseframework.R;
-import com.delta.baseframework.data.entity._User;
 import com.delta.baseframework.modify.MBaseActivity;
 
 import butterknife.BindView;
@@ -55,37 +52,25 @@ public class LoginActivity extends MBaseActivity<LoginPresenter> implements Logi
     protected void initView() {
 
 
-        btLogin = (Button) findViewById(R.id.bt_login);
-        etName = ((EditText) findViewById(R.id.et_name));
-        etPass = ((EditText) findViewById(R.id.et_pass));
-        getmPresenter().getRxManager().on(C.EVENT_LOGIN, new Action1<Object>() {
+//        btLogin = (Button) findViewById(R.id.bt_login);
+//        etName = ((EditText) findViewById(R.id.et_name));
+//        etPass = ((EditText) findViewById(R.id.et_pass));
+        getPresenter().getRxManager().on(C.EVENT_LOGIN, new Action1<Object>() {
 
             @Override
             public void call(Object o) {
-                Log.e(TAG, "call() called with: o = [" + o.toString() + "]");
-            }
-        });
-        btLogin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
 
-                _User user = new _User();
-                user.setPassword("1qaz@WSX");
-                user.setUsername("V.wenju.tian");
-                getmPresenter().Login("V.wenju.tian", "1qaz@WSX");
+                Log.e(TAG, "call() called with: o = [" + o.toString() + "]"+o.getClass());
             }
         });
+
     }
 
 
     @OnClick(R.id.bt_login)
     public void onClick() {
         Log.e("自定义标签", "onClick: ");
-        if (TextUtils.isEmpty(etName.getText()) || TextUtils.isEmpty(etPass.getText())) {
-            return;
-        }
-
-        getmPresenter().Login(etName.getText().toString(), etPass.getText().toString());
+        getPresenter().Login("V.wenju.tian", "1qaz@WSX");
 
     }
 }
