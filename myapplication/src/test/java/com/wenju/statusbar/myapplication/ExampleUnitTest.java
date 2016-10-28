@@ -1,4 +1,4 @@
-package com.example.vwenjutian.myapplication;
+package com.wenju.statusbar.myapplication;
 
 import org.junit.Test;
 

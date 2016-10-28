@@ -5,7 +5,7 @@ import android.util.Log;
 import com.delta.baseframework.C;
 import com.delta.baseframework.data.entity._User;
 
-import rx.functions.Action1;
+import rx.Subscriber;
 
 import static com.bumptech.glide.gifdecoder.GifHeaderParser.TAG;
 
@@ -20,20 +20,29 @@ public class LoginPresenter extends LoginContract.Presenter<LoginModel> {
         /**
          * 在Presenter里确定订阅关系
          */
-        getRxManager().add(getModel().login(userName, passWord).subscribe(new Action1<_User.LoginResult>() {
+        getRxManager().add(getModel().login(userName,passWord).subscribe(new Subscriber<_User.LoginResult>() {
             @Override
-            public void call(_User.LoginResult loginResult) {
-                getRxManager().post(C.EVENT_LOGIN, loginResult);
+            public void onCompleted() {
 
+            }
+
+            @Override
+            public void onError(Throwable e) {
+
+                    getView().loginFailed();
+                    Log.e(TAG, "call() called with: throwable = [" + e .getMessage()+ "]");
+
+            }
+
+            @Override
+            public void onNext(_User.LoginResult loginResult) {
+                getRxManager().post(C.EVENT_LOGIN, loginResult);
                 getView().loginSucess();
                 Log.e("自定义标签", "call: " + loginResult.toString());
-            }
-        }, new Action1<Throwable>() {
-            @Override
-            public void call(Throwable throwable) {
-                Log.e(TAG, "call() called with: throwable = [" + throwable + "]");
+
             }
         }));
+
 
 
     }

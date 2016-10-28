@@ -42,54 +42,6 @@ public class LoginModel implements LoginContract.Model {
 
         return Api.getInstance().service.login(user).compose(RxsRxSchedulers.io_main());
     }
-
-
-//    @Override
-//    public void login(String username, String password) {
-//        {
-//            Map<String, String> param = new HashMap<>();
-//            param.put("name", username);
-//            param.put("pwd", password);
-//            JSONObject object = new JSONObject(param);
-//            JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST,
-//                    URl.LOGIN_URL, object, new Response.Listener<JSONObject>() {
-//
-//                @Override
-//                public void onResponse(JSONObject response) {
-//
-//                    if (getListener() != null) {
-//
-//                        getListener().onSucess(response.toString());
-//                    }
-//                }
-//            }, new Response.ErrorListener() {
-//
-//                @Override
-//                public void onErrorResponse(VolleyError error) {
-//
-//                    if (getListener() != null) {
-//                        getListener().onFailed(null);
-//                    }
-//                }
-//            }) {
-//                @Override
-//                public Map<String, String> getHeaders() throws AuthFailureError {
-//                    return super.getHeaders();
-//                }
-//            };
-//
-//            App.getQueue().add(request);
-//
-//        }
-//    }
-//
-//    @Override
-//    public void loginOut(String userName, String passWord) {
-//
-//
-//
-//    }
-
 }
 
 

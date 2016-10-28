@@ -1,5 +1,6 @@
 package com.delta.baseframework.modify;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -7,6 +8,7 @@ import android.util.Log;
 
 import com.delta.baseframework.base.IView;
 import com.delta.baseframework.utils.TUtil;
+import com.wenju.statusbar.StatusBarCompat;
 
 import butterknife.ButterKnife;
 
@@ -22,6 +24,7 @@ public abstract class MBaseActivity<T extends MBasePresenter> extends AppCompatA
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(getLayoutID());
+        StatusBarCompat.setStatusBarColor(this, Color.parseColor("#ff00ff"));
         ButterKnife.bind(this);
         mPresenter = TUtil.getT(this, 0);
         Log.e("自定义标签", "onCreate: ");

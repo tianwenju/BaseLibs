@@ -22,6 +22,7 @@ public interface LoginContract {
     interface View extends IView {
 
         void loginSucess();
+        void loginFailed();
 
     }
 

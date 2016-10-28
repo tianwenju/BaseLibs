@@ -1,4 +1,4 @@
-package com.example.vwenjutian.myapplication;
+package com.wenju.statusbar.myapplication;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;

@@ -26,7 +26,10 @@ public class LoginActivity extends MBaseActivity<LoginPresenter> implements Logi
 
     }
 
+    @Override
+    public void loginFailed() {
 
+    }
     private static final String TAG = "LoginActivity";
     @BindView(R.id.et_name)
     EditText etName;
@@ -70,61 +73,6 @@ public class LoginActivity extends MBaseActivity<LoginPresenter> implements Logi
                 user.setPassword("1qaz@WSX");
                 user.setUsername("V.wenju.tian");
                 getmPresenter().Login("V.wenju.tian", "1qaz@WSX");
-//                retrofit = new Retrofit.Builder()
-//
-//                        .addConverterFactory(GsonConverterFactory.create())
-//                        .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
-//                        .baseUrl(Api.BASE_URL)
-//                        .build();
-//                ApiService apiService = retrofit.create(ApiService.class);
-
-
-//               apiService.getSiteResults("drc","jan").compose(RxsRxSchedulers.io_main()).subscribe(new Subscriber<SiteData>() {
-//                    @Override
-//                    public void onCompleted() {
-//                        Log.e("自定义标签", "onCompleted: ");
-//                    }
-//
-//                    @Override
-//                    public void onError(Throwable e) {
-//
-//                        Log.e("自定义标签", "onError: "+e.getMessage());
-//                    }
-//
-//                    @Override
-//                    public void onNext(SiteData s) {
-//
-//                        Log.e("自定义标签", "onNext: "+s.toString());
-//                    }
-//                });
-//                Api.getInstance().service.login(user).compose(RxsRxSchedulers.io_main()).subscribe(new Subscriber<_User.LoginResult>() {
-//                    @Override
-//                    public void onCompleted() {
-//
-//                        Log.e("自定义标签", "onCompleted: ");
-//                    }
-//
-//                    @Override
-//                    public void onError(Throwable e) {
-//
-//                        Log.e("自定义标签", "onError: "+e.getMessage());
-//                    }
-//
-//                    @Override
-//                    public void onNext(_User.LoginResult loginResult) {
-//
-//                        Log.e("自定义标签", "onNext: "+loginResult.toString());
-//                    }
-//                });
-
-//                Log.e("自定义标签", "onClick: ");
-//                if (TextUtils.isEmpty(etName.getText()) || TextUtils.isEmpty(etPass.getText())) {
-//                    return;
-//                }
-//
-//
-
-
             }
         });
     }

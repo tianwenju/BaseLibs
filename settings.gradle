@@ -1,1 +1,1 @@
-include ':app', ':baseframework', ':mylibrary', ':myapplication'
+include ':app', ':baseframework', ':mylibrary', ':myapplication', ':statubarlibary'

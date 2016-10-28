@@ -1,4 +1,4 @@
-package com.example.vwenjutian.myapplication;
+package com.wenju.statusbar.myapplication;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
